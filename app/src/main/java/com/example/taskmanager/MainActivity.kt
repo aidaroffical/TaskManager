@@ -1,9 +1,9 @@
 package com.example.taskmanager
 
 import android.os.Bundle
-import android.widget.EditText
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -26,11 +25,23 @@ class MainActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
 
+        navController.navigate(R.id.onBoardingFragment)
+
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
             )
         )
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            if (destination.id == R.id.onBoardingFragment) {
+                navView.isVisible = false
+                supportActionBar?.hide()
+            } else {
+                navView.isVisible = true
+                supportActionBar?.show()
+            }
+
+        }
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
