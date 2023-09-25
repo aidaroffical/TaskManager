@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.taskmanager.R
+import com.example.taskmanager.data.local.Pref
 import com.example.taskmanager.databinding.FragmentOnBoardingBinding
 import com.example.taskmanager.ui.onboarding.adapter.OnBoardingAdapter
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
@@ -14,15 +15,13 @@ import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
 
 class OnBoardingFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
-    }
-
     private lateinit var binding: FragmentOnBoardingBinding
+
     private val adapter = OnBoardingAdapter(this::onClick)
+
+    private val pref by lazy {
+        Pref(requireContext())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,7 +38,8 @@ class OnBoardingFragment : Fragment() {
         indicator.attachTo(binding.viewPager2)
     }
 
-    private fun onClick(){
+    private fun onClick() {
+        pref.userShowed()
         findNavController().navigateUp()
     }
 }
