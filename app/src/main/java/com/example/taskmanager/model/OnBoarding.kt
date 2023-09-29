@@ -1,4 +1,4 @@
-package com.example.taskmanager.ui.model
+package com.example.taskmanager.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

@@ -13,7 +13,7 @@ import com.example.taskmanager.App
 import com.example.taskmanager.R
 import com.example.taskmanager.databinding.FragmentHomeBinding
 import com.example.taskmanager.ui.home.adapter.TaskAdapter
-import com.example.taskmanager.ui.model.Task
+import com.example.taskmanager.model.Task
 
 class HomeFragment : Fragment() {
 
@@ -54,15 +54,15 @@ class HomeFragment : Fragment() {
     private fun onLongClick(task: Task) {
 
         val alertDialog = AlertDialog.Builder(requireContext())
-        alertDialog.setTitle("Удаление задачи")
-        alertDialog.setMessage("Вы уверены, что хотите удалить эту задачу?")
-        alertDialog.setNegativeButton("Нет", object : DialogInterface.OnClickListener {
+        alertDialog.setTitle(getString(R.string.delete_tittle))
+        alertDialog.setMessage(getString(R.string.delete_message))
+        alertDialog.setNegativeButton(getString(R.string.no), object : DialogInterface.OnClickListener {
             override fun onClick(dialog: DialogInterface?, which: Int) {
                 dialog?.cancel()
             }
         })
 
-        alertDialog.setPositiveButton("Да", object : DialogInterface.OnClickListener {
+        alertDialog.setPositiveButton(getString(R.string.yes), object : DialogInterface.OnClickListener {
             override fun onClick(dialog: DialogInterface?, which: Int) {
                 App.db.taskDao().delete(task)
                 setData()

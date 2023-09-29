@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.example.taskmanager.databinding.ItemOnboardingBinding
-import com.example.taskmanager.ui.model.OnBoarding
+import com.example.taskmanager.model.OnBoarding
 
 
 class OnBoardingAdapter(private val onClick: () -> Unit) :
