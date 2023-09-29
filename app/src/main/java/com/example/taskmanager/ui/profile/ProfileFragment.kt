@@ -7,7 +7,6 @@ import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.preference.PreferenceManager.OnActivityResultListener
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
@@ -62,7 +61,7 @@ class ProfileFragment : Fragment() {
             val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
             profileImage.setImageBitmap(bitmap)
         } else {
-            // Обработайте случай, когда imageString равен null или пуст
+
         }
 
 

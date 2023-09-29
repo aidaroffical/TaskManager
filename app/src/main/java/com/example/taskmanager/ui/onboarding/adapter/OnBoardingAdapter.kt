@@ -15,16 +15,19 @@ class OnBoardingAdapter(private val onClick: () -> Unit) :
 
     val data = arrayListOf(
         OnBoarding(
+            0,
             "https://kloop.kg/wp-content/uploads/2021/06/Frame-14-1-1024x637.png",
             "Путешествуйте. Но как-нибудь потом",
             "www.aviasales.kg"
         ),
         OnBoarding(
+            0,
             "https://static.sobaka.ru/images/image/01/29/67/50/_normal.jpg?v=1591185665",
             "Я летал меня катали",
             "www.aviasales.kg"
         ),
         OnBoarding(
+            0,
             "https://psjradmin.avs.io/wp-content/uploads/2022/05/sloj-1024x543.jpg",
             "Поиск дешевых авиабилетов",
             "www.aviasales.kg"
@@ -66,9 +69,11 @@ class OnBoardingAdapter(private val onClick: () -> Unit) :
             binding.btnStart.isVisible = adapterPosition == data.lastIndex
             binding.btnSkip.isVisible = adapterPosition == data.lastIndex
 
+
             binding.tvTittle.text = onBoarding.tittle
             binding.tvDesc.text = onBoarding.desc
-            /*/TODO:Bind image*/
+
+
             Glide.with(binding.ivBoard).load(onBoarding.image).into(binding.ivBoard)
         }
     }
